@@ -1,0 +1,24 @@
+ name: Handle WhatsApp message
+on:   twilio api:messages:create --from whatsapp:${TWILIO_WHATSAPP_NUMBER} --to $FROM --body "You said: $BODY"
+
+   
+  workflow_dispatch:
+    inputs:
+      Body:how are you doing 
+        description: 'Message body'
+        required: true
+      From:
+        description: 'Sender WhatsApp number'required: true
+jobs:
+  reply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Handle WhatsApp message 
+      TWILIO_SID: ${{ secrets.TWILIO_SID }}
+   TWILIO_TOKEN: ${{ secrets.TWILIO_TOKEN }}
+          TWILIO_WHATSAPP_NUMBER: ${{ +12602335749 }}
+          BODY: ${{ github.event.inputs.Body }}
+          FROM: ${{ github.event.inputs.From }}
+        run: |
+          twilio api:messages:create --from whatsapp:$+233594331359--to $FROM --body .save
+          
